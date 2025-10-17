@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Sayangku 🌙</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0f1e 0%, #2a0845 50%, #1a0033 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+        
+        /* Background elements */
+        .bg-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+        }
+        
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ff006e, #8338ec);
+            top: -20%;
+            left: -10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .blob-2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #00d4ff, #3a86ff);
+            bottom: -15%;
+            right: -5%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #fb5607, #ffbe0b);
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -30px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+        
+        /* Stars */
+        .stars-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .moon-icon {
+            font-size: 50px;
+            margin-bottom: 12px;
+            animation: moonGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes moonGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 200, 100, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(255, 200, 100, 0.8); }
+        }
+        
+        .title {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffc0cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* Content */
+        .content {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .poem {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .poem-line {
+            opacity: 0;
+            animation: fadeInSequence 0.8s ease-out forwards;
+        }
+        
+        .poem-line:nth-child(1) { animation-delay: 0.2s; }
+        .poem-line:nth-child(2) { animation-delay: 0.4s; }
+        .poem-line:nth-child(3) { animation-delay: 0.6s; }
+        .poem-line:nth-child(4) { animation-delay: 0.8s; }
+        .poem-line:nth-child(5) { animation-delay: 1s; }
+        
+        @keyframes fadeInSequence {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            animation: scaleIn 0.6s ease-out backwards;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .stat-box:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .stat-box:nth-child(1) { animation-delay: 1.2s; }
+        .stat-box:nth-child(2) { animation-delay: 1.4s; }
+        .stat-box:nth-child(3) { animation-delay: 1.6s; }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 12px;
+            animation: fadeIn 0.8s ease-out 2s backwards;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            background: transparent;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        .btn-secondary {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Floating elements */
+        .floating-heart {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0;
+            animation: floatHeart 4s ease-in infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="bg-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="stars-container" id="starsContainer"></div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="moon-icon">🌙</div>
+            <h1 class="title">Midnight Love</h1>
+            <p class="subtitle">A Letter For You</p>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="poem">
+                <div class="poem-line">Di kegelapan malam yang tenang</div>
+                <div class="poem-line">Aku hanya memikirkan tentang dirimu</div>
+                <div class="poem-line">Cahayamu lebih terang dari bintang</div>
+                <div class="poem-line">Cintaku akan abadi selamanya</div>
+                <div class="poem-line">Terima kasih karena menjadi bintangku 💫</div>
+            </div>
+        </div>
+        
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Waktu Bersama</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Cinta</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">♡</div>
+                <div class="stat-label">Selamanya</div>
+            </div>
+        </div>
+        
+        <!-- Buttons -->
+        <div class="buttons">
+            <button class="btn btn-primary" onclick="sendLove()">💌 Kirim Cinta</button>
+            <button class="btn btn-secondary" onclick="shareMessage()">✨ Share</button>
+        </div>
+    </div>
+    
+    <script>
+        // Create stars
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 60; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+        }
+        
+        // Create floating hearts
+        function createFloatingHearts() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+                
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 1500);
+        }
+        
+        // Send love function
+        function sendLove() {
+            // Ganti dengan nomor WhatsApp Anda
+            const phoneNumber = "6282133799620";
+            const message = "Terima kasih sudah mengunjungi halaman spesial ini... Aku sayang kamu 💕";
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(waUrl, '_blank');
+        }
+        
+        // Share message function
+        function shareMessage() {
+            const text = "Kamu adalah cahayaku di kegelapan malam 🌙💕";
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Untuk Sayangku',
+                    text: text
+                });
+            } else {
+                alert('Pesan: ' + text);
+            }
+        }
+        
+        // Initialize
+        window.addEventListener('load', () => {
+            createStars();
+            createFloatingHearts();
+        });
+    </script>
+</body>
+</html>
